@@ -11,14 +11,14 @@ terraform {
 }
 
 provider "google" {
-  project = var.project
-  region  = var.region
+  project = "elite-totality-418717"
+  region  = "asia-south1"
 }
 
 
 resource "google_storage_bucket" "state-bucket" {
   name                        = "tf-8874-terraform"
-  location                    = "ASIA-SOUTH1"
+  location                    = "asia-south1"
   force_destroy               = true
   uniform_bucket_level_access = true
 }
