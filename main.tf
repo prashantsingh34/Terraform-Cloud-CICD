@@ -45,22 +45,24 @@ resource "google_compute_instance" "default" {
 data "google_compute_instance" "appserver" {
   name       = "my-instance"
   zone       = "asia-south1-a"
-  depends_on = [google_compute_instance.default]
+  depends_on = [ google_compute_instance.default ]
 }
 
 output "instance_name" {
-  value       = google_compute_instance.default.service_account
-  description = "Name of the created Compute Engine instance"
-  depends_on  = [google_compute_instance.default]
+  value       = google_compute_instance.default.instance_id
+  description = "The id of compute engine instance created"
+  depends_on  = [data.google_compute_instance.appserver]
 }
 
 output "instance_ip_internal" {
   value       = google_compute_instance.default.network_interface.0.network_ip
   description = "Internal IP of the created Compute Engine instance"
+  depends_on  = [data.google_compute_instance.appserver]
 }
 
 
 output "instance_ip_external" {
   value       = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
   description = "External IP of the created Compute Engine instance"
+  depends_on  = [data.google_compute_instance.appserver]
 }
