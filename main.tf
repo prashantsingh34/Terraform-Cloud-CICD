@@ -54,13 +54,13 @@ output "instance_name" {
   depends_on  = [google_compute_instance.default]
 }
 
-output "instance_ip internal" {
+output "instance_ip_internal" {
   value       = google_compute_instance.default.network_interface.0.network_ip
   description = "Internal IP of the created Compute Engine instance"
 }
 
 
-output "instance_ip external" {
+output "instance_ip_external" {
   value       = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
   description = "External IP of the created Compute Engine instance"
 }
