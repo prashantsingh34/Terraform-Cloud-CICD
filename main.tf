@@ -57,7 +57,7 @@ output "instance_name" {
 output "instance_ip_internal" {
   value       = google_compute_instance.default.network_interface.0.network_ip
   description = "Internal IP of the created Compute Engine instance"
-  depends_on  = [data.google_compute_instance.appserver]
+  depends_on  = ;;;[data.google_compute_instance.appserver]
 }
 
 
